@@ -13,7 +13,7 @@ Crafted by **Krishna Sharma**, this app empowers teams and users to manage suppo
 
 ## 🌐 Live Demo
 
-👉 [**See Service Desk App in action**](https://krishnash648.github.io/service-desk-app)
+👉 [**See Service Desk App in action**](https://service-desk-app-vegu.vercel.app/login)
 
 ---
 

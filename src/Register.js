@@ -54,7 +54,7 @@ function Register() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', background: 'none', position: 'relative' }}>
       <div className="login-card" style={{ background: 'rgba(255,255,255,0.55)', padding: 48, borderRadius: 28, boxShadow: '0 8px 32px 0 rgba(106,142,251,0.13)', width: 380, border: '1.5px solid rgba(255,255,255,0.25)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <img src="/logo.png" alt="App Logo" style={{ width: 64, height: 64, marginBottom: 18, filter: 'drop-shadow(0 2px 8px #6e8efb55)' }} />
+        <img src={process.env.PUBLIC_URL + '/logo.png'} alt="App Logo" style={{ width: 64, height: 64, marginBottom: 18, filter: 'drop-shadow(0 2px 8px #6e8efb55)' }} />
         <h2 style={{ marginBottom: 10, textAlign: 'center', fontWeight: 800, color: '#6e8efb', fontSize: 28, letterSpacing: 1.2 }}>Register</h2>
         <div style={{ marginBottom: 22, color: '#888', fontSize: 16, textAlign: 'center', fontWeight: 500 }}>
           Create your account to access the Service Desk.

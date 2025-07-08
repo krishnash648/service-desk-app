@@ -183,7 +183,7 @@ function Login() {
         >
           {highContrast ? 'Standard Mode' : 'High Contrast'}
         </button>
-        <img src="/logo.png" alt="App Logo" style={{ width: 64, height: 64, marginBottom: 18, filter: 'drop-shadow(0 2px 8px #6e8efb55)' }} />
+        <img src={process.env.PUBLIC_URL + '/logo.png'} alt="App Logo" style={{ width: 64, height: 64, marginBottom: 18, filter: 'drop-shadow(0 2px 8px #6e8efb55)' }} />
         <h2 style={{ marginBottom: 10, textAlign: 'center', fontWeight: 800, color: highContrast ? '#ffd600' : '#6e8efb', fontSize: 28, letterSpacing: 1.2 }}>Login</h2>
         <div style={{ marginBottom: 22, color: highContrast ? '#ffd600' : '#888', fontSize: 16, textAlign: 'center', fontWeight: 500 }}>
           Welcome back! Sign in to access your Service Desk.

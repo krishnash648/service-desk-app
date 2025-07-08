@@ -154,7 +154,7 @@ function AppHeader() {
   return (
     <div className="app-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       <div className="app-title" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }} onClick={() => navigate(user ? '/dashboard' : '/login')}>
-        <img src="/logo.png" alt="Service Desk Logo" style={{ width: 40, height: 40, marginRight: 8, verticalAlign: 'middle' }} /> Service Desk App
+        <img src={process.env.PUBLIC_URL + '/logo.png'} alt="Service Desk Logo" style={{ width: 40, height: 40, marginRight: 8, verticalAlign: 'middle' }} /> Service Desk App
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
         <div style={{ position: 'relative' }}>
