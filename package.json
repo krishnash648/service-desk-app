@@ -45,5 +45,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://krishnash648.github.io/service-desk-app"
+  "engines": {
+    "node": "18.x"
+  }
 }
