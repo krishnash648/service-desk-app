@@ -39,22 +39,22 @@ Crafted by **Krishna Sharma**, this app empowers teams and users to manage suppo
 ## 🖼️ Screenshots
 
 <p align="center">
-  <img src="/loginpage.jpeg" alt="Login Page" width="600" />
+  <img src="public/loginpage.jpeg" alt="Login Page" width="600" />
   <br/><b>Login Page</b>
 </p>
 
 <p align="center">
-  <img src="/register.jpeg" alt="Register Page" width="600" />
+  <img src="public/register.jpeg" alt="Register Page" width="600" />
   <br/><b>Register Page</b>
 </p>
 
 <p align="center">
-  <img src="/UserDashboard.jpeg" alt="User Dashboard" width="600" />
+  <img src="public/UserDashboard.jpeg" alt="User Dashboard" width="600" />
   <br/><b>User Dashboard</b>
 </p>
 
 <p align="center">
-  <img src="/AdmminDashboard.jpeg" alt="Admin Dashboard" width="600" />
+  <img src="public/AdmminDashboard.jpeg" alt="Admin Dashboard" width="600" />
   <br/><b>Admin Dashboard</b>
 </p>
 
