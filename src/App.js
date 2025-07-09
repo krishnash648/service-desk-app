@@ -195,15 +195,15 @@ function AppHeader() {
               {filteredNotifications.length === 0 && <div style={{ color: '#888', fontSize: 14 }}>No notifications</div>}
             </div>
           )}
-        </div>
-        <div className="user-info">
-          {user && (
-            <Link to="/profile" style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#fff', textDecoration: location.pathname === '/profile' ? 'underline' : 'none' }}>
-              <img src={profile.avatar || 'https://ui-avatars.com/api/?name=' + (profile.displayName || user.email) + '&background=1976d2&color=fff&size=32'} alt="avatar" style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover', border: '1.5px solid #fff', marginRight: 6 }} />
-              {profile.displayName || user.email}
-            </Link>
-          )}
-          {user && <button style={{ width: 'auto', padding: '8px 18px', marginLeft: 8, background: '#fff', color: '#1976d2', border: '1.5px solid #1976d2', fontWeight: 600, borderRadius: 6, cursor: 'pointer' }} onClick={handleLogout}>Logout</button>}
+      </div>
+      <div className="user-info">
+        {user && (
+          <Link to="/profile" style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#fff', textDecoration: location.pathname === '/profile' ? 'underline' : 'none' }}>
+            <img src={profile.avatar || 'https://ui-avatars.com/api/?name=' + (profile.displayName || user.email) + '&background=1976d2&color=fff&size=32'} alt="avatar" style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover', border: '1.5px solid #fff', marginRight: 6 }} />
+            {profile.displayName || user.email}
+          </Link>
+        )}
+        {user && <button style={{ width: 'auto', padding: '8px 18px', marginLeft: 8, background: '#fff', color: '#1976d2', border: '1.5px solid #1976d2', fontWeight: 600, borderRadius: 6, cursor: 'pointer' }} onClick={handleLogout}>Logout</button>}
         </div>
         <select value={language} onChange={e => setLanguage(e.target.value)} style={{ borderRadius: 6, padding: '4px 10px', fontWeight: 600, fontSize: 15, border: '1.5px solid #c8d8e4', background: '#fff', color: '#2b6777', outline: 'none', cursor: 'pointer' }}>
           <option value="en">English</option>
@@ -500,10 +500,10 @@ function Dashboard() {
 
   const filteredTickets = tickets
     .filter(ticket => {
-      const matchesSearch = ticket.description.toLowerCase().includes(search.toLowerCase());
-      const matchesStatus = filterStatus ? ticket.status === filterStatus : true;
-      const matchesPriority = filterPriority ? ticket.priority === filterPriority : true;
-      return matchesSearch && matchesStatus && matchesPriority;
+    const matchesSearch = ticket.description.toLowerCase().includes(search.toLowerCase());
+    const matchesStatus = filterStatus ? ticket.status === filterStatus : true;
+    const matchesPriority = filterPriority ? ticket.priority === filterPriority : true;
+    return matchesSearch && matchesStatus && matchesPriority;
     })
     .sort((a, b) => {
       if (sortBy === 'date_desc') return new Date(b.createdAt) - new Date(a.createdAt);
@@ -516,7 +516,7 @@ function Dashboard() {
         return a.status.localeCompare(b.status);
       }
       return 0;
-    });
+  });
 
   return (
     <div className="card">
@@ -858,24 +858,24 @@ function App() {
 
   return (
     <LanguageProvider>
-      <AuthProvider>
-        <Router>
-          <div className="background-pattern"></div>
-          <AppHeader />
-          <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick pauseOnFocusLoss draggable pauseOnHover />
-          <Routes>
+    <AuthProvider>
+      <Router>
+        <div className="background-pattern"></div>
+        <AppHeader />
+        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick pauseOnFocusLoss draggable pauseOnHover />
+        <Routes>
             <Route path="/" element={<RoleRedirect />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/admin-demo" element={<><AdminDemo /><AdminDashboard /></>} />
-            <Route path="/profile" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
+          <Route path="/profile" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
             <Route path="/support" element={<Support />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/analytics" element={<PrivateRoute><AnalyticsBoard /></PrivateRoute>} />
-          </Routes>
+        </Routes>
           <div className="footer">
             <span>
               <a href="/terms" style={{ color: '#c8d8e4', textDecoration: 'underline', marginRight: 18 }}>Terms of Service</a>
@@ -883,8 +883,8 @@ function App() {
             </span>
             Service Desk App &copy; {new Date().getFullYear()} &mdash; Built by Krishna
           </div>
-        </Router>
-      </AuthProvider>
+      </Router>
+    </AuthProvider>
     </LanguageProvider>
   );
 }
