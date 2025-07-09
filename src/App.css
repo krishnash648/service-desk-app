@@ -372,7 +372,19 @@ tr:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   margin: 0;
-  overflow: visible;
-  max-height: none;
   z-index: 10;
+  max-width: 400px;
+  width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 32px 24px;
+  box-sizing: border-box;
+  /* keep your background, border, and shadow styles as needed */
+}
+
+@media (max-width: 600px) {
+  .login-card {
+    max-width: 98vw;
+    padding: 16px 4px;
+  }
 }
