@@ -9,6 +9,7 @@ body {
   font-family: 'Inter', 'Roboto', 'Segoe UI', Arial, sans-serif;
   color: #222;
   padding-top: 80px;
+  overflow-y: auto;
 }
 body::before {
   content: '';
@@ -366,25 +367,54 @@ tr:hover {
   }
 }
 
-.login-card {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
+.login-card,
+.register-card {
+  position: relative;
+  margin: 40px auto 24px auto;
   z-index: 10;
-  max-width: 400px;
-  width: 90vw;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 32px 24px;
+  max-width: 900px;      /* Much wider for desktop */
+  width: 99vw;
+  padding: 32px 48px;    /* Comfortable padding */
   box-sizing: border-box;
-  /* keep your background, border, and shadow styles as needed */
+  border-radius: 18px;
+  background: rgba(255,255,255,0.25);
 }
 
-@media (max-width: 600px) {
-  .login-card {
-    max-width: 98vw;
+.login-card input,
+.login-card button,
+.register-card input,
+.register-card button {
+  margin-bottom: 4px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  font-size: 0.97rem;
+}
+
+.login-card .section-header,
+.register-card .section-header {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.login-card p,
+.register-card p,
+.login-card label,
+.register-card label {
+  margin-bottom: 4px;
+  font-size: 0.96rem;
+}
+
+@media (max-width: 1000px) {
+  .login-card,
+  .register-card {
+    max-width: 99vw;
+    width: 99vw;
     padding: 16px 4px;
+    margin: 20px auto 12px auto;
   }
+}
+
+body {
+  min-height: 100vh;
+  overflow-y: auto;
 }

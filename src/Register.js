@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { auth, db } from './firebase';
 import { createUserWithEmailAndPassword, sendEmailVerification, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { doc, setDoc } from 'firebase/firestore';
 
 function Register() {
@@ -13,7 +13,28 @@ function Register() {
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [loading, setLoading] = useState(false);
   const [adminCode, setAdminCode] = useState('');
+  const [role, setRole] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
   const ADMIN_SECRET = 'ADMIN2024'; 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      setCurrentUser(user);
+      if (user) {
+
+        const userDoc = await import('firebase/firestore').then(({ doc, getDoc }) => getDoc(doc(db, 'users', user.uid)));
+        const userRole = userDoc.exists() ? userDoc.data().role : 'user';
+        setRole(userRole);
+        if (userRole === 'admin') {
+          navigate('/admin');
+        } else {
+          navigate('/dashboard');
+        }
+      }
+    });
+    return () => unsubscribe();
+  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +53,12 @@ function Register() {
       setEmail('');
       setPassword('');
       setAdminCode('');
+      // Redirect after registration
+      if (role === 'admin') {
+        navigate('/admin');
+      } else {
+        navigate('/dashboard');
+      }
     } catch (err) {
       setError(err.message);
     }
@@ -45,11 +72,18 @@ function Register() {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
       setSuccess('Registration successful. You are now signed in.');
+      // After Google sign up, redirect to dashboard
+      navigate('/dashboard');
     } catch (err) {
       setError('Google sign-up failed.');
     }
     setLoading(false);
   };
+
+  if (currentUser && role) {
+    // Already logged in, redirecting
+    return null;
+  }
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', background: 'none', position: 'relative' }}>
